@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Built Loud — Convert Attention Into Revenue</title>
+<meta name="description" content="Built Loud helps small businesses turn their website into a revenue engine. We don't just build websites — we fix conversion problems, optimize digital experiences, and drive real growth. Powered by Synergy Systems & Solutions.">
+<meta property="og:title" content="Built Loud — Convert Attention Into Revenue">
+<meta property="og:description" content="Most websites don't have a traffic problem — they have a conversion problem. We fix that.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://builtloud.co">
+<meta property="og:image" content="https://builtloud.co/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & Base ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --black: #0A0A0A;
+  --blue: #2D9FD3;
+  --blue-glow: rgba(45, 159, 211, 0.15);
+  --blue-deep: #1a7ba3;
+  --white: #FFFFFF;
+  --gray-100: #F5F5F5;
+  --gray-200: #E0E0E0;
+  --gray-400: #999;
+  --gray-500: #777;
+  --gray-600: #555;
+  --synergy-blue: #3AAFE0;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  line-height: 1.15;
+}
+a { color: inherit; text-decoration: none; }
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+img { max-width: 100%; display: block; }
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px var(--blue-glow); }
+  50% { box-shadow: 0 0 40px var(--blue-glow), 0 0 60px rgba(45, 159, 211, 0.08); }
+}
+.fade-up { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* ── Nav ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px 0;
+  transition: all 0.4s ease;
+}
+nav.scrolled {
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800; font-size: 1.4rem; letter-spacing: -0.5px;
+}
+.nav-logo span { color: var(--blue); }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a {
+  font-size: 0.9rem; font-weight: 500; color: var(--gray-400);
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-cta {
+  background: var(--blue); color: var(--white) !important;
+  padding: 10px 22px; border-radius: 6px; font-weight: 600;
+  transition: all 0.3s;
+}
+.nav-cta:hover { background: var(--blue-deep); transform: translateY(-1px); }
+.mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+.mobile-toggle span { display: block; width: 22px; height: 2px; background: var(--white); margin: 5px 0; transition: all 0.3s; }
+
+/* ── Hero ── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 120px 0 80px;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: url('hero.jpg') center/cover no-repeat;
+}
+.hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10,10,10,0.75) 0%,
+    rgba(10,10,10,0.85) 50%,
+    rgba(10,10,10,0.97) 100%
+  );
+}
+.hero-content {
+  position: relative; z-index: 2; max-width: 780px;
+  animation: fadeUp 0.9s ease forwards;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(45, 159, 211, 0.1);
+  border: 1px solid rgba(45, 159, 211, 0.25);
+  border-radius: 50px;
+  padding: 8px 18px;
+  font-size: 0.85rem; font-weight: 500; color: var(--blue);
+  margin-bottom: 28px;
+  letter-spacing: 0.5px;
+}
+.hero-tag::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--blue);
+  border-radius: 50%;
+  animation: pulseGlow 2s infinite;
+}
+.hero h1 {
+  font-size: clamp(2.8rem, 6vw, 4.2rem);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  margin-bottom: 24px;
+}
+.hero h1 .highlight {
+  color: var(--blue);
+  position: relative;
+}
+.hero-sub {
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  color: var(--gray-400);
+  max-width: 600px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--blue);
+  color: var(--white);
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1rem; font-weight: 700;
+  transition: all 0.3s;
+  border: none; cursor: pointer;
+}
+.btn-primary:hover { background: var(--blue-deep); transform: translateY(-2px); box-shadow: 0 8px 30px var(--blue-glow); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent;
+  color: var(--white);
+  padding: 16px 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.15);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1rem; font-weight: 600;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.btn-ghost:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.04); }
+
+/* ── Problem Statement ── */
+.problem {
+  padding: 120px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.problem-left h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  letter-spacing: -1px;
+  margin-bottom: 24px;
+}
+.problem-left h2 .highlight { color: var(--blue); }
+.problem-left p {
+  font-size: 1.1rem;
+  color: var(--gray-400);
+  line-height: 1.8;
+  font-weight: 300;
+}
+.problem-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.stat-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: all 0.4s;
+}
+.stat-card:hover {
+  border-color: rgba(45, 159, 211, 0.3);
+  background: rgba(45, 159, 211, 0.04);
+}
+.stat-number {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 2.4rem; font-weight: 800;
+  color: var(--blue);
+  display: block;
+  margin-bottom: 8px;
+}
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--gray-500);
+  line-height: 1.5;
+}
+
+/* ── Services ── */
+.services {
+  padding: 120px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.section-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--blue);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.section-title {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--gray-400);
+  max-width: 600px;
+  font-weight: 300;
+  margin-bottom: 64px;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.service-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 40px 32px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+.service-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--blue), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.service-card:hover { border-color: rgba(45, 159, 211, 0.2); transform: translateY(-4px); }
+.service-card:hover::before { opacity: 1; }
+.service-icon {
+  width: 48px; height: 48px;
+  background: var(--blue-glow);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px;
+  font-size: 1.3rem;
+}
+.service-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  letter-spacing: -0.3px;
+}
+.service-card p {
+  font-size: 0.95rem;
+  color: var(--gray-500);
+  line-height: 1.7;
+  font-weight: 300;
+}
+.service-tag {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ── Social Proof Ticker ── */
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(90deg, rgba(45, 159, 211, 0.06) 0%, rgba(45, 159, 211, 0.02) 50%, rgba(45, 159, 211, 0.06) 100%);
+  border-top: 1px solid rgba(45, 159, 211, 0.1);
+  border-bottom: 1px solid rgba(45, 159, 211, 0.1);
+  padding: 18px 0;
+  position: relative;
+}
+.ticker-wrap::before,
+.ticker-wrap::after {
+  content: '';
+  position: absolute; top: 0; bottom: 0; width: 100px; z-index: 2;
+  pointer-events: none;
+}
+.ticker-wrap::before { left: 0; background: linear-gradient(90deg, var(--black), transparent); }
+.ticker-wrap::after { right: 0; background: linear-gradient(270deg, var(--black), transparent); }
+.ticker-label {
+  position: absolute; left: 0; top: 0; bottom: 0; z-index: 3;
+  display: flex; align-items: center;
+  padding: 0 24px;
+  background: linear-gradient(90deg, var(--black) 70%, transparent);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  white-space: nowrap;
+}
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: tickerScroll 28s linear infinite;
+  padding-left: 260px;
+}
+.ticker-track:hover { animation-play-state: paused; }
+@keyframes tickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-brand {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  padding: 0 32px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.15);
+  letter-spacing: -0.3px;
+  transition: color 0.3s;
+  text-decoration: none;
+}
+.ticker-brand:hover { color: rgba(255,255,255,0.4); }
+.ticker-sep {
+  color: rgba(45, 159, 211, 0.25);
+  padding: 0 8px;
+  font-size: 0.6rem;
+  user-select: none;
+}
+
+/* ── Image Breaks ── */
+.img-break {
+  position: relative;
+  width: 100%;
+  height: 45vh;
+  min-height: 300px;
+  overflow: hidden;
+}
+.img-break img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.img-break-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10,10,10,0.6) 0%,
+    rgba(10,10,10,0.3) 40%,
+    rgba(10,10,10,0.6) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.img-break-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: -0.5px;
+  padding: 0 24px;
+  max-width: 700px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+
+/* ── Process ── */
+.process {
+  padding: 120px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-top: 64px;
+}
+.step {
+  position: relative;
+  padding: 32px 24px;
+}
+.step-num {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: rgba(45, 159, 211, 0.1);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.step h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+}
+.step p {
+  font-size: 0.9rem;
+  color: var(--gray-500);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ── Conversion Callout ── */
+.callout {
+  padding: 100px 0;
+  text-align: center;
+  position: relative;
+}
+.callout::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(45, 159, 211, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.callout-content { position: relative; z-index: 2; }
+.callout h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  letter-spacing: -1px;
+  margin-bottom: 24px;
+  max-width: 700px;
+  margin-left: auto; margin-right: auto;
+}
+.callout p {
+  font-size: 1.1rem;
+  color: var(--gray-400);
+  max-width: 560px;
+  margin: 0 auto 40px;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* ── Who We Work With ── */
+.audience {
+  padding: 120px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 64px;
+}
+.audience-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 40px 32px;
+  transition: all 0.4s;
+}
+.audience-card:hover { border-color: rgba(45, 159, 211, 0.2); }
+.audience-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+  color: var(--blue);
+}
+.audience-card p {
+  font-size: 0.95rem;
+  color: var(--gray-500);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ── CTA / Contact ── */
+#contact {
+  padding: 120px 0 80px;
+}
+.cta-box {
+  background: linear-gradient(135deg, rgba(45, 159, 211, 0.08) 0%, rgba(45, 159, 211, 0.02) 100%);
+  border: 1px solid rgba(45, 159, 211, 0.15);
+  border-radius: 24px;
+  padding: 80px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-box::before {
+  content: '';
+  position: absolute; top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle at 30% 30%, rgba(45, 159, 211, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+.cta-box h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+  position: relative; z-index: 2;
+}
+.cta-box p {
+  font-size: 1.1rem;
+  color: var(--gray-400);
+  max-width: 500px;
+  margin: 0 auto 40px;
+  position: relative; z-index: 2;
+  font-weight: 300;
+}
+.cta-box .btn-primary { position: relative; z-index: 2; font-size: 1.05rem; padding: 18px 36px; }
+.cta-details {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 32px;
+  position: relative; z-index: 2;
+}
+.cta-details a {
+  font-size: 0.9rem;
+  color: var(--gray-500);
+  transition: color 0.3s;
+}
+.cta-details a:hover { color: var(--blue); }
+
+/* ── Powered By ── */
+.powered {
+  padding: 60px 0;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.powered-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--gray-500);
+  margin-bottom: 8px;
+}
+.powered-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--synergy-blue);
+}
+.powered-name span { font-weight: 800; }
+.powered-desc {
+  font-size: 0.8rem;
+  color: var(--gray-600);
+  margin-top: 6px;
+}
+
+/* ── Footer ── */
+footer {
+  padding: 40px 0;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+.footer-inner {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-logo {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800; font-size: 1.1rem;
+}
+.footer-logo span { color: var(--blue); }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 0.85rem; color: var(--gray-500); transition: color 0.3s; }
+.footer-links a:hover { color: var(--white); }
+.footer-copy { font-size: 0.8rem; color: var(--gray-600); }
+
+/* ── Mobile ── */
+@media (max-width: 900px) {
+  .ticker-label { display: none; }
+  .ticker-track { padding-left: 0; }
+  .nav-links { display: none; }
+  .mobile-toggle { display: block; }
+  .nav-links.open {
+    display: flex; flex-direction: column;
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: rgba(10, 10, 10, 0.98);
+    padding: 24px;
+    gap: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .problem-grid { grid-template-columns: 1fr; gap: 48px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .audience-grid { grid-template-columns: 1fr; }
+  .cta-box { padding: 48px 28px; }
+  .cta-details { flex-direction: column; gap: 12px; }
+  .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+}
+@media (max-width: 600px) {
+  .process-steps { grid-template-columns: 1fr; }
+  .problem-stats { grid-template-columns: 1fr; }
+}
+
+/* ── ROI Calculator Floating Button ── */
+.roi-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--blue);
+  border: none;
+  border-radius: 50px;
+  padding: 14px 22px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(45,159,211,0.35);
+}
+.roi-fab:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(45,159,211,0.5); }
+.roi-fab svg { width: 16px; height: 16px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; }
+.roi-fab.hidden { display: none; }
+
+/* ── ROI Modal Overlay ── */
+.roi-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(10,10,10,0.6);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  align-items: center; justify-content: center;
+  padding: 24px;
+}
+.roi-overlay.open { display: flex; }
+.roi-modal {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px 28px 24px;
+  max-width: 420px;
+  width: 100%;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  color: #0A0A0A;
+}
+.roi-modal-close {
+  position: absolute; top: 12px; right: 16px;
+  background: none; border: none; font-size: 18px; color: #999;
+  cursor: pointer; padding: 4px;
+}
+.roi-modal h2 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 20px; font-weight: 700; line-height: 1.3;
+  margin-bottom: 6px; color: #0A0A0A;
+}
+.roi-modal .roi-sub {
+  font-size: 13px; color: #6B7280; margin-bottom: 22px; line-height: 1.5;
+}
+.roi-modal-section {
+  background: #F4F5F7; border: 0.5px solid rgba(10,10,10,0.07);
+  border-radius: 12px; padding: 18px 20px; margin-bottom: 16px;
+}
+.roi-card-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10px; font-weight: 600; letter-spacing: 1.2px;
+  text-transform: uppercase; color: var(--blue); margin-bottom: 14px;
+}
+.roi-field { margin-bottom: 14px; }
+.roi-field:last-child { margin-bottom: 0; }
+.roi-field-label { font-size: 12px; font-weight: 500; margin-bottom: 5px; color: #0A0A0A; }
+.roi-select {
+  width: 100%; font-family: 'Outfit', sans-serif; font-size: 12px;
+  color: #0A0A0A; background: #fff; border: 0.5px solid rgba(10,10,10,0.1);
+  border-radius: 8px; padding: 10px 12px; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6' fill='%236B7280'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 12px center;
+}
+.roi-slider-row { display: flex; align-items: center; gap: 12px; }
+.roi-slider {
+  flex: 1; -webkit-appearance: none; appearance: none;
+  height: 4px; border-radius: 2px; background: rgba(10,10,10,0.08);
+  outline: none;
+}
+.roi-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 18px; height: 18px;
+  border-radius: 50%; background: var(--blue); cursor: pointer;
+  box-shadow: 0 1px 4px rgba(45,159,211,0.3);
+}
+.roi-slider-val {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px; font-weight: 700; min-width: 60px; text-align: right; color: #0A0A0A;
+}
+
+/* Lead gate */
+.roi-modal-gate {
+  background: #F4F5F7; border: 0.5px solid rgba(10,10,10,0.07);
+  border-radius: 12px; padding: 20px; margin-bottom: 16px;
+}
+.roi-modal-gate h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px; font-weight: 700; margin-bottom: 4px; color: #0A0A0A;
+}
+.roi-modal-gate p { font-size: 12px; color: #6B7280; margin-bottom: 14px; }
+.roi-modal-gate input[type="text"],
+.roi-modal-gate input[type="email"] {
+  width: 100%; font-family: 'Outfit', sans-serif; font-size: 13px;
+  padding: 10px 12px; border: 0.5px solid rgba(10,10,10,0.1);
+  border-radius: 8px; margin-bottom: 8px; color: #0A0A0A; background: #fff;
+}
+.roi-modal-gate-btn {
+  width: 100%; font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px; font-weight: 600; color: #fff;
+  background: var(--blue); border: none; border-radius: 8px;
+  padding: 12px; cursor: pointer; transition: opacity 0.2s;
+  margin-top: 4px;
+}
+.roi-modal-gate-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.roi-modal-gate-btn:not(:disabled):hover { opacity: 0.85; }
+
+/* Results */
+.roi-modal-results { display: none; margin-bottom: 16px; }
+.roi-modal-results.show { display: block; }
+.roi-results-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10px; font-weight: 600; letter-spacing: 1.2px;
+  text-transform: uppercase; color: var(--blue); margin-bottom: 12px;
+}
+.roi-modal-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 0; border-bottom: 0.5px solid rgba(10,10,10,0.06);
+  font-size: 12px;
+}
+.roi-row-label { color: #6B7280; }
+.roi-row-val { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: #0A0A0A; }
+.roi-modal-row.gain .roi-row-val { color: #1D9E75; }
+.roi-modal-annual {
+  background: rgba(29,158,117,0.06); border: 1px solid rgba(29,158,117,0.14);
+  border-radius: 12px; padding: 20px; text-align: center; margin-top: 12px;
+}
+.roi-annual-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 1.2px;
+  text-transform: uppercase; color: #1D9E75; margin-bottom: 4px;
+}
+.roi-annual-val {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 32px; font-weight: 700; color: #1D9E75;
+}
+.roi-annual-sub { font-size: 11px; color: #6B7280; margin-top: 2px; }
+.roi-modal-cta {
+  display: none; align-items: center; justify-content: center; gap: 6px;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; font-weight: 600;
+  color: #fff; background: var(--blue); padding: 12px 24px; border-radius: 8px;
+  border: none; cursor: pointer; text-decoration: none; width: 100;
+  text-align: center; margin-bottom: 12px; transition: opacity 0.2s;
+}
+.roi-modal-cta.show { display: flex; }
+.roi-modal-cta:hover { opacity: 0.85; }
+.roi-modal-footnote { font-size: 11px; color: #999; text-align: center; }
+</style>
+</head>
+<body>
+
+<!-- ── Nav ── -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">built<span>loud</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="#problem">The Problem</a>
+        <a href="#services">What We Do</a>
+        <a href="#process">How It Works</a>
+        <a href="#contact" class="nav-cta">Get Your Free Audit &rarr;</a>
+      </div>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-tag">Digital Growth Partner</div>
+      <h1>We help businesses convert <span class="highlight">attention into revenue.</span></h1>
+      <p class="hero-sub">Most websites don't have a traffic problem &mdash; they have a conversion problem. Built Loud turns your website into a revenue engine that works as hard as you do.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">Get your free site audit &rarr;</a>
+        <a href="#problem" class="btn-ghost">See if this is you</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Social Proof Ticker ── -->
+<div class="ticker-wrap">
+  <div class="ticker-label">Our founder has worked with</div>
+  <div class="ticker-track">
+    <a href="https://www.nike.com" target="_blank" rel="noopener" class="ticker-brand">Nike</a><span class="ticker-sep">&#9670;</span>
+    <a href="https://www.rolex.com" target="_blank" rel="noopener" class="ticker-brand">Rolex</a><span class="ticker-sep">&#9670;</span>
+    <a href="https://www.roomstogo.com" target="_blank" rel="noopener" class="ticker-brand">Rooms To Go</a><span class="ticker-sep">&#9670;</span>
+    <a href="https://www.yelp.com" target="_blank" rel="noopener" class="ticker-brand">Yelp</a><span class="ticker-sep">&#9670;</span>
+    <a href="https://www.hellofresh.com" target="_blank" rel="noopener" class="ticker-brand">HelloFresh</a><span class="ticker-sep">&#9670;</span>
+    <a href="https://www.simon.com" target="_blank" rel="noopener" class="ticker-brand">Simon Property Group</a><span class="ticker-sep">&#9670;</span>
+    <a href="https://www.anylabtestnow.com" target="_blank" rel="noopener" class="ticker-brand">Any Lab Test Now</a><span class="ticker-sep">&#9670;</span>
+    <!-- duplicate for seamless loop -->
+    <a href="https://www.nike.com" target="_blank" rel="noopener" class="ticker-brand">Nike</a><span class="ticker-sep">&#9670;</span>
+    <a href="https://www.rolex.com" target="_blank" rel="noopener" class="ticker-brand">Rolex</a><span class="ticker-sep">&#9670;</span>
+    <a href="https://www.roomstogo.com" target="_blank" rel="noopener" class="ticker-brand">Rooms To Go</a><span class="ticker-sep">&#9670;</span>
+    <a href="https://www.yelp.com" target="_blank" rel="noopener" class="ticker-brand">Yelp</a><span class="ticker-sep">&#9670;</span>
+    <a href="https://www.hellofresh.com" target="_blank" rel="noopener" class="ticker-brand">HelloFresh</a><span class="ticker-sep">&#9670;</span>
+    <a href="https://www.simon.com" target="_blank" rel="noopener" class="ticker-brand">Simon Property Group</a><span class="ticker-sep">&#9670;</span>
+    <a href="https://www.anylabtestnow.com" target="_blank" rel="noopener" class="ticker-brand">Any Lab Test Now</a><span class="ticker-sep">&#9670;</span>
+  </div>
+</div>
+
+<!-- ── The Problem ── -->
+<section class="problem" id="problem">
+  <div class="container">
+    <div class="problem-grid">
+      <div class="problem-left fade-up">
+        <h2>You're getting traffic. But where are the <span class="highlight">customers?</span></h2>
+        <p>Your business is great in person. Customers love you. But your website? It's not closing. Visitors land, scroll, and leave &mdash; no call, no form fill, no sale. The problem isn't your business. It's the digital experience you're handing people when they find you online.</p>
+      </div>
+      <div class="problem-stats fade-up">
+        <div class="stat-card">
+          <span class="stat-number">96%</span>
+          <span class="stat-label">of visitors leave a website without taking any action</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">3 sec</span>
+          <span class="stat-label">is all you get before someone decides to stay or bounce</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">74%</span>
+          <span class="stat-label">of users judge a business's credibility by its website design</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">2.5x</span>
+          <span class="stat-label">more conversions from optimized mobile experiences</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Image Break 1 ── -->
+<section class="img-break">
+  <img src="https://images.unsplash.com/photo-1556740758-90de374c12ad?q=80&w=2000&auto=format" alt="Local business storefront" loading="lazy">
+  <div class="img-break-overlay">
+    <div class="img-break-text">Your customers are Googling you right now. What do they see?</div>
+  </div>
+</section>
+
+<!-- ── Services ── -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-label fade-up">What We Do</div>
+    <h2 class="section-title fade-up">We don't just build websites. <br>We build <span style="color: var(--blue);">growth engines.</span></h2>
+    <p class="section-subtitle fade-up">Every engagement starts with one question: is your website converting? Then we fix what's broken and build what's missing.</p>
+
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon">&#9889;</div>
+        <h3>Conversion-Ready Refresh</h3>
+        <p>Your site gets a complete overhaul — not just a facelift. We restructure your layout, rewrite your copy for action, optimize for mobile, and build clear conversion paths that turn visitors into leads.</p>
+        <span class="service-tag">Foundation &rarr;</span>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">&#128200;</div>
+        <h3>Ongoing Growth Optimization</h3>
+        <p>Monthly retainer. We monitor your analytics, test what's working, improve what's not, and keep your digital presence sharp. SEO, content updates, CRO tweaks, performance tuning — handled.</p>
+        <span class="service-tag">Growth Engine &rarr;</span>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">&#127919;</div>
+        <h3>Digital Experience Strategy</h3>
+        <p>The full picture. We audit your entire customer journey online — from Google search to final conversion. Google Business Profile, review strategy, local SEO, site speed, and competitive positioning.</p>
+        <span class="service-tag">Full Picture &rarr;</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Image Break 2 ── -->
+<section class="img-break">
+  <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=2000&auto=format" alt="Crowd energy event atmosphere" loading="lazy">
+  <div class="img-break-overlay">
+    <div class="img-break-text">We don't build quiet. We build loud.</div>
+  </div>
+</section>
+
+<!-- ── Process ── -->
+<section class="process" id="process">
+  <div class="container">
+    <div class="section-label fade-up">How It Works</div>
+    <h2 class="section-title fade-up">From audit to revenue. <span style="color: var(--blue);">Four steps.</span></h2>
+    <p class="section-subtitle fade-up">No long contracts. No jargon. Just a clear path from where you are to where you should be.</p>
+
+    <div class="process-steps">
+      <div class="step fade-up">
+        <div class="step-num">01</div>
+        <h3>Free Site Audit</h3>
+        <p>We analyze your current site for conversion killers — load speed, mobile experience, CTA clarity, trust signals, and SEO gaps. You get a clear report, no strings attached.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">02</div>
+        <h3>Strategy Call</h3>
+        <p>We walk through the findings together. What's costing you customers? What's the fastest fix? We map out a plan tied to your actual business goals — not vanity metrics.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">03</div>
+        <h3>Build & Launch</h3>
+        <p>Your conversion-ready site goes live. Fast. We handle everything — design, copy, mobile optimization, analytics setup, speed tuning. Typically delivered in one to two weeks.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">04</div>
+        <h3>Optimize & Grow</h3>
+        <p>This is where it gets good. Monthly optimization based on real data. We track what's working, fix what's not, and continuously improve your conversion rate and search visibility.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Image Break 3 ── -->
+<section class="img-break">
+  <img src="https://images.unsplash.com/photo-1590012314607-cda9d9b699ae?q=80&w=2000&auto=format" alt="Urban street energy" loading="lazy">
+  <div class="img-break-overlay">
+    <div class="img-break-text">Built Loud for businesses that move.</div>
+  </div>
+</section>
+
+<!-- ── Conversion Callout ── -->
+<section class="callout fade-up">
+  <div class="container">
+    <div class="callout-content">
+      <h2>Your website should be your <span style="color: var(--blue);">best salesperson.</span></h2>
+      <p>It should be working 24/7 — qualifying leads, building trust, and converting visitors into customers. If it's not doing that, it's just a digital business card collecting dust.</p>
+      <a href="#contact" class="btn-primary">Let's fix that &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Who We Work With ── -->
+<section class="audience" id="audience">
+  <div class="container">
+    <div class="section-label fade-up">Who We Work With</div>
+    <h2 class="section-title fade-up">Built for businesses that are <span style="color: var(--blue);">ready to grow.</span></h2>
+    <div class="audience-grid">
+      <div class="audience-card fade-up">
+        <h3>Established &amp; Stale</h3>
+        <p>You've been in business for years. Customers love you. But your website looks like 2017 and you know it's costing you. You need a refresh that actually drives results — not just a prettier version of what you have.</p>
+      </div>
+      <div class="audience-card fade-up">
+        <h3>Growing &amp; Ambitious</h3>
+        <p>You're scaling and need your digital presence to keep up. Maybe you're a minority-owned business hitting your stride, or you just landed a big opportunity. You need a partner who thinks about growth, not just design.</p>
+      </div>
+      <div class="audience-card fade-up">
+        <h3>New &amp; Launching</h3>
+        <p>You're starting something and want to come out of the gate looking like you've been doing this for years. We build your foundation right the first time — conversion-optimized from day one, not an afterthought.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Contact CTA ── -->
+<section id="contact">
+  <div class="container">
+    <div class="cta-box fade-up">
+      <h2>Ready to turn your site into a <span style="color: var(--blue);">revenue engine?</span></h2>
+      <p>Get a free, no-pressure site audit. We'll show you exactly what's costing you customers — and how to fix it.</p>
+      <a class="btn-primary" id="ctaLink">Get your free site audit &rarr;</a>
+      <div class="cta-details">
+        <a id="phoneLink">(980) 354-5499</a>
+        <a id="emailLink"><span class="__cf_email__" data-cfemail="512234303f113c2822283f3423362822227f323e3c">[email&#160;protected]</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Powered By ── -->
+<section class="powered">
+  <div class="container">
+    <div class="powered-label">Powered by</div>
+    <div class="powered-name"><span>Synergy</span> Systems &amp; Solutions</div>
+    <div class="powered-desc">Full-suite IT services &amp; document solutions &nbsp;&bull;&nbsp; Charlotte &bull; RTP &bull; Atlanta &bull; Greenville</div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a href="#" class="footer-logo">built<span>loud</span></a>
+      <div class="footer-links">
+        <a href="#problem">The Problem</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-copy">&copy; 2026 Built Loud Creative. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── Nav scroll ──
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// ── Mobile menu ──
+const mobileToggle = document.getElementById('mobileToggle');
+const navLinks = document.getElementById('navLinks');
+mobileToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+// ── Smooth scroll ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// ── Scroll reveal ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ── Dynamic email/phone (Cloudflare/Netlify obfuscation fix) ──
+(function() {
+  const user = 'sean';
+  const domain = 'mysynergyss.com';
+  const email = user + '@' + domain;
+  const phone = '9803545499';
+  const cal = 'https://calendly.com/synergysystems/new-meeting';
+
+  const emailEl = document.getElementById('emailLink');
+  const phoneEl = document.getElementById('phoneLink');
+  const ctaEl = document.getElementById('ctaLink');
+
+  if (emailEl) { emailEl.href = 'mailto:' + email; emailEl.textContent = email; }
+  if (phoneEl) { phoneEl.href = 'tel:+1' + phone; }
+  if (ctaEl) { ctaEl.href = cal; ctaEl.target = '_blank'; ctaEl.rel = 'noopener'; }
+})();
+</script>
+
+<!-- ── ROI Calculator: Floating Button ── -->
+<button class="roi-fab" id="roi-open">
+  <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><line x1="1" y1="12" x2="23" y2="12"/></svg>
+  Calculate Your ROI
+</button>
+
+<!-- ── ROI Calculator: Popup Modal ── -->
+<div class="roi-overlay" id="roi-overlay">
+  <div class="roi-modal">
+    <button class="roi-modal-close" id="roi-close">&#10005;</button>
+    <h2>See how your website may be impacting your revenue</h2>
+    <p class="roi-sub">Choose your business type and adjust the sliders to see your estimated opportunity.</p>
+
+    <div class="roi-modal-section">
+      <div class="roi-card-label">Your business</div>
+      <div class="roi-field">
+        <div class="roi-field-label">Business type</div>
+        <select class="roi-select" id="roi-btype">
+          <option value="restaurant">Restaurant / Food &amp; Bev</option>
+          <option value="retail">Retail / Boutique</option>
+          <option value="home">Home Services</option>
+          <option value="professional">Professional Services</option>
+        </select>
+      </div>
+      <div class="roi-field">
+        <div class="roi-field-label">Monthly website visitors</div>
+        <div class="roi-slider-row">
+          <input type="range" class="roi-slider" id="roi-visitors" min="200" max="10000" step="50" value="1000">
+          <div class="roi-slider-val" id="roi-visitors-val">1,000</div>
+        </div>
+      </div>
+      <div class="roi-field">
+        <div class="roi-field-label" id="roi-aov-label">Average order value</div>
+        <div class="roi-slider-row">
+          <input type="range" class="roi-slider" id="roi-aov" min="5" max="500" step="5" value="18">
+          <div class="roi-slider-val" id="roi-aov-val">$18</div>
+        </div>
+      </div>
+    </div>
+
+    <form class="roi-modal-gate" id="roi-gate" name="roi-calculator" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="roi-calculator">
+      <input type="hidden" name="business-type" id="roi-h-btype">
+      <input type="hidden" name="visitors" id="roi-h-visitors">
+      <input type="hidden" name="aov" id="roi-h-aov">
+      <input type="hidden" name="annual-potential" id="roi-h-annual">
+      <p style="display:none"><input name="bot-field"></p>
+      <h3>See your results</h3>
+      <p>Enter your info to unlock your personalized snapshot.</p>
+      <input type="text" name="first-name" id="roi-fname" placeholder="First name" autocomplete="given-name" required>
+      <input type="email" name="email" id="roi-email" placeholder="Email address" autocomplete="email" required>
+      <button type="submit" class="roi-modal-gate-btn" id="roi-unlock" disabled>Show my results</button>
+    </form>
+
+    <div class="roi-modal-results" id="roi-results">
+      <div class="roi-results-label">Revenue opportunity snapshot</div>
+      <div class="roi-modal-row"><span class="roi-row-label">Projected monthly conversions (optimized)</span><span class="roi-row-val" id="roi-r-conversions">—</span></div>
+      <div class="roi-modal-row gain"><span class="roi-row-label">Opportunity gap</span><span class="roi-row-val" id="roi-r-gap">—</span></div>
+      <div class="roi-modal-row gain"><span class="roi-row-label">Additional monthly revenue potential</span><span class="roi-row-val" id="roi-r-monthly">—</span></div>
+      <div class="roi-modal-annual">
+        <div class="roi-annual-label">Annual revenue potential</div>
+        <div class="roi-annual-val" id="roi-r-annual">—</div>
+        <div class="roi-annual-sub">based on current monthly traffic</div>
+      </div>
+    </div>
+
+    <a class="roi-modal-cta" id="roi-cta" href="https://calendly.com/synergysystems/new-meeting" target="_blank" rel="noopener">Get your free website audit &rarr;</a>
+    <p class="roi-modal-footnote">Estimates based on current visitor behavior and typical local benchmarks. Results may vary.</p>
+  </div>
+</div>
+
+<script>
+// ── ROI Calculator Logic ──
+(function() {
+  const profiles = {
+    restaurant:    { rate: 0.025, aov: 18,  label: 'Average order value',     min: 5,  max: 80,  step: 1 },
+    retail:        { rate: 0.020, aov: 45,  label: 'Average order value',     min: 10, max: 200, step: 5 },
+    home:          { rate: 0.015, aov: 250, label: 'Average job value',       min: 50, max: 500, step: 10 },
+    professional:  { rate: 0.012, aov: 150, label: 'Average engagement value',min: 50, max: 500, step: 10 }
+  };
+  const optimizedLift = 1.35;
+
+  const $ = id => document.getElementById(id);
+  const fmt = n => n.toLocaleString('en-US');
+  const fmtMoney = n => '$' + n.toLocaleString('en-US');
+
+  function setProfile() {
+    const p = profiles[$('roi-btype').value];
+    $('roi-aov').min = p.min; $('roi-aov').max = p.max; $('roi-aov').step = p.step;
+    $('roi-aov').value = p.aov;
+    $('roi-aov-val').textContent = fmtMoney(p.aov);
+    $('roi-aov-label').textContent = p.label;
+    calc();
+  }
+
+  function calc() {
+    const p = profiles[$('roi-btype').value];
+    const visitors = +$('roi-visitors').value;
+    const aov = +$('roi-aov').value;
+    $('roi-visitors-val').textContent = fmt(visitors);
+    $('roi-aov-val').textContent = fmtMoney(aov);
+
+    const currentConversions = Math.round(visitors * p.rate);
+    const optimizedConversions = Math.round(visitors * p.rate * optimizedLift);
+    const gap = optimizedConversions - currentConversions;
+    const monthlyRev = gap * aov;
+    const annualRev = monthlyRev * 12;
+
+    // Store for hidden fields
+    window._roiData = { conversions: optimizedConversions, gap, monthly: monthlyRev, annual: annualRev };
+
+    // Update hidden form fields
+    $('roi-h-btype').value = $('roi-btype').value;
+    $('roi-h-visitors').value = visitors;
+    $('roi-h-aov').value = aov;
+    $('roi-h-annual').value = annualRev;
+  }
+
+  function showResults() {
+    const d = window._roiData;
+    $('roi-r-conversions').textContent = fmt(d.conversions);
+    $('roi-r-gap').textContent = fmt(d.gap) + ' additional conversions';
+    $('roi-r-monthly').textContent = fmtMoney(d.monthly);
+    $('roi-r-annual').textContent = fmtMoney(d.annual);
+    $('roi-gate').style.display = 'none';
+    $('roi-results').classList.add('show');
+    $('roi-cta').classList.add('show');
+  }
+
+  function checkForm() {
+    $('roi-unlock').disabled = !($('roi-fname').value.trim() && $('roi-email').value.includes('@'));
+  }
+
+  // Events
+  $('roi-btype').addEventListener('change', setProfile);
+  $('roi-visitors').addEventListener('input', calc);
+  $('roi-aov').addEventListener('input', calc);
+  $('roi-fname').addEventListener('input', checkForm);
+  $('roi-email').addEventListener('input', checkForm);
+
+  $('roi-gate').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString()
+    }).catch(() => {});
+    showResults();
+  });
+
+  // Open / Close
+  $('roi-open').addEventListener('click', function() {
+    $('roi-overlay').classList.add('open');
+    this.classList.add('hidden');
+    document.body.style.overflow = 'hidden';
+  });
+
+  function closeROI() {
+    $('roi-overlay').classList.remove('open');
+    $('roi-open').classList.remove('hidden');
+    document.body.style.overflow = '';
+  }
+
+  $('roi-close').addEventListener('click', closeROI);
+  $('roi-overlay').addEventListener('click', function(e) { if (e.target === this) clos
