@@ -1241,7 +1241,7 @@ document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
   $('roi-gate').addEventListener('submit', function(e) {
     e.preventDefault();
     const formData = new FormData(this);
-    fetch('/', {
+     fetch('https://formspree.io/f/mpqonpll', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(formData).toString()
