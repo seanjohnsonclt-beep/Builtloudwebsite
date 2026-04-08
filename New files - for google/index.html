@@ -1263,4 +1263,10 @@ document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
   }
 
   $('roi-close').addEventListener('click', closeROI);
-  $('roi-overlay').addEventListener('click', function(e) { if (e.target === this) clos
+  $('roi-overlay').addEventListener('click', function(e) { if (e.target === this) closeROI(); });
+
+  // Init
+  setProfile();
+  calc();
+})();
+</script>
